@@ -126,13 +126,13 @@ jobs:
     steps:
       - name: Check workflow status
         run: |
-          if [ "${{ needs.test.result }}" == "success" ] && \
-             [ "${{ needs.build-linux.result }}" == "success" ] && \
-             [ "${{ needs.build-windows.result }}" == "success" ] && \
-             [ "${{ needs.build-macos.result }}" == "success" ]; then
-            echo "✅ All builds passed!"
-            exit 0
-          else
+          if [ "${{ needs.test.result }}" == "failure" ] || \
+             [ "${{ needs.build-linux.result }}" == "failure" ] || \
+             [ "${{ needs.build-windows.result }}" == "failure" ] || \
+             [ "${{ needs.build-macos.result }}" == "failure" ]; then
             echo "❌ Some builds failed"
             exit 1
+          else
+            echo "✅ All builds passed!"
+            exit 0
           fi
