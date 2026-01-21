@@ -4,6 +4,27 @@ Analizador de facturas con KPIs y gráficas interactivas. Aplicación de escrito
 
 ## 🚀 Inicio Rápido
 
+### Con Script (Recomendado)
+
+**Linux/macOS:**
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+**Windows (Opción 1 - Batch):**
+```cmd
+start.bat
+```
+
+**Windows (Opción 2 - PowerShell, recomendado):**
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser  # Una sola vez
+.\start.ps1
+```
+
+### Manual
+
 ```bash
 # Instalar dependencias
 npm install
