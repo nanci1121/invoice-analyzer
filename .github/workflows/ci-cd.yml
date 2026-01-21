@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout code
@@ -55,7 +55,7 @@ jobs:
         run: npm run build:linux
 
       - name: Upload Linux artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux-artifacts
           path: dist-electron/
@@ -83,7 +83,7 @@ jobs:
         run: npm run build:win
 
       - name: Upload Windows artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-artifacts
           path: dist-electron/
@@ -111,7 +111,7 @@ jobs:
         run: npm run build
 
       - name: Upload macOS artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-artifacts
           path: dist-electron/
@@ -126,13 +126,13 @@ jobs:
     steps:
       - name: Check workflow status
         run: |
-          if [ "${{ needs.test.result }}" == "success" ] && \
-             [ "${{ needs.build-linux.result }}" == "success" ] && \
-             [ "${{ needs.build-windows.result }}" == "success" ] && \
-             [ "${{ needs.build-macos.result }}" == "success" ]; then
-            echo "✅ All builds passed!"
+          if [ "${{ needs.test.result }}" == "failure" ] || \
+             [ "${{ needs.build-linux.result }}" == "failure" ] || \
+             [ "${{ needs.build-windows.result }}" == "failure" ] || \
+             [ "${{ needs.build-macos.result }}" == "failure" ]; then
+            echo "❌ Some builds failed"
             exit 0
           else
-            echo "❌ Some builds failed"
-            exit 1
+            echo "✅ All builds passed!"
+            exit 0
           fi

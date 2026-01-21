@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Analizador de facturas con KPI y gráficas (Electron + React + SQLite)",
   "main": "electron/main.js",
+  "author": "Venancio <venancio@example.com>",
   "scripts": {
     "dev": "concurrently \"npm run vite\" \"npm run electron\"",
     "vite": "vite",
@@ -46,10 +47,10 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
-    "electron": "^28.1.0",
-    "electron-builder": "^24.9.1",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.5.0",
     "tailwindcss": "^3.4.0",
-    "vite": "^5.0.8",
+    "vite": "^7.3.1",
     "wait-on": "^7.2.0"
   }
 }
