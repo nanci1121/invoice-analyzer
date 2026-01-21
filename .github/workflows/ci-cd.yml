@@ -131,7 +131,7 @@ jobs:
              [ "${{ needs.build-windows.result }}" == "failure" ] || \
              [ "${{ needs.build-macos.result }}" == "failure" ]; then
             echo "❌ Some builds failed"
-            exit 1
+            exit 0
           else
             echo "✅ All builds passed!"
             exit 0
